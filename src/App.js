@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
@@ -11,30 +11,25 @@ import A11yMessage from './A11yMessage';
 import  '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
+//The Redux store is created as usual, but we add extra configuration to enable the use of the Redux browser dev tools.
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-class App extends Component {
-
-    render() {
-        return (
-            <Provider store={store}>
+const App = () => (
+    <Provider store={store}>
+        <div>
+            <A11yMessage/>
+            <Router>
                 <div>
-                    <A11yMessage/>
-                    <Router>
-                        <div>
-
-                            <Header/>
-                            <main className="container">
-                                <Route exact={true} path="/" component={Overview}/>
-                                <Route path="/orders" component={Orders}/>
-                                <Route path="/contact" component={Contact}/>
-                            </main>
-                        </div>
-                    </Router>
+                    <Header/>
+                    <main className="container">
+                        <Route exact={true} path="/" component={Overview}/>
+                        <Route path="/orders" component={Orders}/>
+                        <Route path="/contact" component={Contact}/>
+                    </main>
                 </div>
-            </Provider>
-        );
-    }
-}
+            </Router>
+        </div>
+    </Provider>
+);
 
 export default App;
