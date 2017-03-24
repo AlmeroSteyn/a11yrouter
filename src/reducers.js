@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as actions from './actions';
 
-const a11yData = (state={a11yMessage: 'initial'}, action) => {
+const a11yData = (state={}, action) => {
     switch(action.type){
         case actions.SET_A11Y_MESSAGE:
             return Object.assign({}, state, {a11yMessage: action.message});
