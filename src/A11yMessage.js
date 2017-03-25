@@ -14,6 +14,8 @@ class A11yMessage extends Component {
     }
 
     componentWillReceiveProps(nextProps){
+        //We delay the setting and clearing of the accessible route transition
+        //text to ensure that the screen readers don't miss it.
         if(nextProps.a11yMessage){
             setTimeout(()=>{this.setState({
                 currentA11yMessage: nextProps.a11yMessage
